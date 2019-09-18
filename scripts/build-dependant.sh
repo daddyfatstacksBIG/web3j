@@ -18,7 +18,7 @@ ensure_version
 
 configure_github_user
 
-github_clone $1
+github_clone "$1"
 
-git checkout -B release/$VERSION
-git push --set-upstream origin release/$VERSION
+git checkout -B release/"$VERSION"
+git push --set-upstream origin release/"${VERSION}"

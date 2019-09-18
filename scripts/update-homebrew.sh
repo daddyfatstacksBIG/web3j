@@ -16,12 +16,12 @@ source "$SCRIPTS_DIR/common.bash"
 
 ensure_version
 
-STATUS_CODE=`curl --silent --connect-timeout 8 --output /dev/null https://github.com/web3j/web3j/releases/download/v${VERSION}/web3j-${VERSION}.zip -I -w "%{http_code}\n"`
+STATUS_CODE=`curl --silent --connect-timeout 8 --output /dev/null https://github.com/web3j/web3j/releases/download/v"$VERSION/web3j-$VERSION".zip -I -w "%{http_code}\n"`
 
-echo $STATUS_CODE
+echo "$STATUS_CODE"
 
 if [[ $STATUS_CODE -ne "302" ]]; then
-    echo "ERROR: Missing release has the version ${VERSION} been released yet?"
+    echo "ERROR: Missing release has the version $VERSION been released yet?"
     exit 1
 fi
 
@@ -29,8 +29,8 @@ configure_github_user
 
 github_clone "homebrew-web3j"
 
-sed -i "5s/.*/  url \"https:\/\/github.com\/web3j\/web3j\/releases\/download\/v${VERSION}\/web3j-${VERSION}.zip\"/" web3j.rb
-SHA=$(curl -L https://github.com/web3j/web3j/releases/download/v${VERSION}/web3j-${VERSION}.zip | shasum -a 256 | tr -d ' ' | tr -d '-')
-sed -i "7s/.*/  sha256 \"${SHA}\"/" web3j.rb
-git commit -am "Change web3j version to ${VERSION}"
+sed -i "5s/.*/  url \"https:\/\/github.com\/web3j\/web3j\/releases\/download\/v$VERSION\/web3j-$VERSION.zip\"/" web3j.rb
+SHA=$(curl -L https://github.com/web3j/web3j/releases/download/v"$VERSION/web3j-$VERSION".zip | shasum -a 256 | tr -d ' ' | tr -d '-')
+sed -i "7s/.*/  sha256 \"$SHA\"/" web3j.rb
+git commit -am "Change web3j version to $VERSION"
 git push
