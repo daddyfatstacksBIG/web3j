@@ -103,7 +103,7 @@ To get the latest version on Mac OS or Linux, type the following in your termina
 
    curl -L https://get.web3j.io | sh
 
-Then follow the on-screen instructions or head `here <https://docs.web3j.io/quickstart/>`_. 
+Then follow the on-screen instructions or head `here <https://docs.web3j.io/quickstart/>`_.
 
 Alternatively, a `web3j sample project <https://github.com/web3j/sample-project-gradle>`_ is available that
 demonstrates a number of core features of Ethereum with web3j, including:
@@ -204,7 +204,7 @@ Start up an Ethereum client if you don't already have one running.
    $ parity --chain testnet
 
 
-`Infura <https://infura.io/>`_, 
+`Infura <https://infura.io/>`_,
 Or use which provides **free clients** running in the cloud:
 
 .. code-block:: java
