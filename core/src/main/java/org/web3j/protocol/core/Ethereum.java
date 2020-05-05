@@ -1,19 +1,21 @@
 /*
  * Copyright 2019 Web3 Labs Ltd.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.web3j.protocol.core;
 
 import java.math.BigInteger;
-
 import org.web3j.protocol.core.methods.request.ShhFilter;
 import org.web3j.protocol.core.methods.response.DbGetHex;
 import org.web3j.protocol.core.methods.response.DbGetString;
@@ -64,152 +66,172 @@ import org.web3j.protocol.core.methods.response.ShhUninstallFilter;
 import org.web3j.protocol.core.methods.response.ShhVersion;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.core.methods.response.Web3Sha3;
-import org.web3j.protocol.core.methods.response.management.AdminNodeInfo;
+import org.web3j.protocol.core.methods.response.admin.AdminNodeInfo;
+import org.web3j.protocol.core.methods.response.admin.AdminPeers;
 
 /** Core Ethereum JSON-RPC API. */
 public interface Ethereum {
-    Request<?, Web3ClientVersion> web3ClientVersion();
+  Request<?, Web3ClientVersion> web3ClientVersion();
 
-    Request<?, Web3Sha3> web3Sha3(String data);
+  Request<?, Web3Sha3> web3Sha3(String data);
 
-    Request<?, NetVersion> netVersion();
+  Request<?, NetVersion> netVersion();
 
-    Request<?, NetListening> netListening();
+  Request<?, NetListening> netListening();
 
-    Request<?, NetPeerCount> netPeerCount();
+  Request<?, NetPeerCount> netPeerCount();
 
-    Request<?, AdminNodeInfo> adminNodeInfo();
+  Request<?, AdminNodeInfo> adminNodeInfo();
 
-    Request<?, EthProtocolVersion> ethProtocolVersion();
+  Request<?, AdminPeers> adminPeers();
 
-    Request<?, EthChainId> ethChainId();
+  Request<?, EthProtocolVersion> ethProtocolVersion();
 
-    Request<?, EthCoinbase> ethCoinbase();
+  Request<?, EthChainId> ethChainId();
 
-    Request<?, EthSyncing> ethSyncing();
+  Request<?, EthCoinbase> ethCoinbase();
 
-    Request<?, EthMining> ethMining();
+  Request<?, EthSyncing> ethSyncing();
 
-    Request<?, EthHashrate> ethHashrate();
+  Request<?, EthMining> ethMining();
 
-    Request<?, EthGasPrice> ethGasPrice();
+  Request<?, EthHashrate> ethHashrate();
 
-    Request<?, EthAccounts> ethAccounts();
+  Request<?, EthGasPrice> ethGasPrice();
 
-    Request<?, EthBlockNumber> ethBlockNumber();
+  Request<?, EthAccounts> ethAccounts();
 
-    Request<?, EthGetBalance> ethGetBalance(
-            String address, DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthBlockNumber> ethBlockNumber();
 
-    Request<?, EthGetStorageAt> ethGetStorageAt(
-            String address, BigInteger position, DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthGetBalance>
+  ethGetBalance(String address, DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthGetTransactionCount> ethGetTransactionCount(
-            String address, DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthGetStorageAt>
+  ethGetStorageAt(String address, BigInteger position,
+                  DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthGetBlockTransactionCountByHash> ethGetBlockTransactionCountByHash(
-            String blockHash);
+  Request<?, EthGetTransactionCount>
+  ethGetTransactionCount(String address,
+                         DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthGetBlockTransactionCountByNumber> ethGetBlockTransactionCountByNumber(
-            DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthGetBlockTransactionCountByHash>
+  ethGetBlockTransactionCountByHash(String blockHash);
 
-    Request<?, EthGetUncleCountByBlockHash> ethGetUncleCountByBlockHash(String blockHash);
+  Request<?, EthGetBlockTransactionCountByNumber>
+  ethGetBlockTransactionCountByNumber(
+      DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthGetUncleCountByBlockNumber> ethGetUncleCountByBlockNumber(
-            DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthGetUncleCountByBlockHash>
+  ethGetUncleCountByBlockHash(String blockHash);
 
-    Request<?, EthGetCode> ethGetCode(String address, DefaultBlockParameter defaultBlockParameter);
+  Request<?, EthGetUncleCountByBlockNumber>
+  ethGetUncleCountByBlockNumber(DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthSign> ethSign(String address, String sha3HashOfDataToSign);
+  Request<?, EthGetCode>
+  ethGetCode(String address, DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, org.web3j.protocol.core.methods.response.EthSendTransaction> ethSendTransaction(
-            org.web3j.protocol.core.methods.request.Transaction transaction);
+  Request<?, EthSign> ethSign(String address, String sha3HashOfDataToSign);
 
-    Request<?, org.web3j.protocol.core.methods.response.EthSendTransaction> ethSendRawTransaction(
-            String signedTransactionData);
+  Request<?, org.web3j.protocol.core.methods.response.EthSendTransaction>
+  ethSendTransaction(
+      org.web3j.protocol.core.methods.request.Transaction transaction);
 
-    Request<?, org.web3j.protocol.core.methods.response.EthCall> ethCall(
-            org.web3j.protocol.core.methods.request.Transaction transaction,
-            DefaultBlockParameter defaultBlockParameter);
+  Request<?, org.web3j.protocol.core.methods.response.EthSendTransaction>
+  ethSendRawTransaction(String signedTransactionData);
 
-    Request<?, EthEstimateGas> ethEstimateGas(
-            org.web3j.protocol.core.methods.request.Transaction transaction);
+  Request<?, org.web3j.protocol.core.methods.response.EthCall>
+  ethCall(org.web3j.protocol.core.methods.request.Transaction transaction,
+          DefaultBlockParameter defaultBlockParameter);
 
-    Request<?, EthBlock> ethGetBlockByHash(String blockHash, boolean returnFullTransactionObjects);
+  Request<?, EthEstimateGas> ethEstimateGas(
+      org.web3j.protocol.core.methods.request.Transaction transaction);
 
-    Request<?, EthBlock> ethGetBlockByNumber(
-            DefaultBlockParameter defaultBlockParameter, boolean returnFullTransactionObjects);
+  Request<?, EthBlock> ethGetBlockByHash(String blockHash,
+                                         boolean returnFullTransactionObjects);
 
-    Request<?, EthTransaction> ethGetTransactionByHash(String transactionHash);
+  Request<?, EthBlock>
+  ethGetBlockByNumber(DefaultBlockParameter defaultBlockParameter,
+                      boolean returnFullTransactionObjects);
 
-    Request<?, EthTransaction> ethGetTransactionByBlockHashAndIndex(
-            String blockHash, BigInteger transactionIndex);
+  Request<?, EthTransaction> ethGetTransactionByHash(String transactionHash);
 
-    Request<?, EthTransaction> ethGetTransactionByBlockNumberAndIndex(
-            DefaultBlockParameter defaultBlockParameter, BigInteger transactionIndex);
+  Request<?, EthTransaction>
+  ethGetTransactionByBlockHashAndIndex(String blockHash,
+                                       BigInteger transactionIndex);
 
-    Request<?, EthGetTransactionReceipt> ethGetTransactionReceipt(String transactionHash);
+  Request<?, EthTransaction> ethGetTransactionByBlockNumberAndIndex(
+      DefaultBlockParameter defaultBlockParameter, BigInteger transactionIndex);
 
-    Request<?, EthBlock> ethGetUncleByBlockHashAndIndex(
-            String blockHash, BigInteger transactionIndex);
+  Request<?, EthGetTransactionReceipt>
+  ethGetTransactionReceipt(String transactionHash);
 
-    Request<?, EthBlock> ethGetUncleByBlockNumberAndIndex(
-            DefaultBlockParameter defaultBlockParameter, BigInteger transactionIndex);
+  Request<?, EthBlock>
+  ethGetUncleByBlockHashAndIndex(String blockHash, BigInteger transactionIndex);
 
-    Request<?, EthGetCompilers> ethGetCompilers();
+  Request<?, EthBlock>
+  ethGetUncleByBlockNumberAndIndex(DefaultBlockParameter defaultBlockParameter,
+                                   BigInteger transactionIndex);
 
-    Request<?, EthCompileLLL> ethCompileLLL(String sourceCode);
+  Request<?, EthGetCompilers> ethGetCompilers();
 
-    Request<?, EthCompileSolidity> ethCompileSolidity(String sourceCode);
+  Request<?, EthCompileLLL> ethCompileLLL(String sourceCode);
 
-    Request<?, EthCompileSerpent> ethCompileSerpent(String sourceCode);
+  Request<?, EthCompileSolidity> ethCompileSolidity(String sourceCode);
 
-    Request<?, EthFilter> ethNewFilter(org.web3j.protocol.core.methods.request.EthFilter ethFilter);
+  Request<?, EthCompileSerpent> ethCompileSerpent(String sourceCode);
 
-    Request<?, EthFilter> ethNewBlockFilter();
+  Request<?, EthFilter>
+  ethNewFilter(org.web3j.protocol.core.methods.request.EthFilter ethFilter);
 
-    Request<?, EthFilter> ethNewPendingTransactionFilter();
+  Request<?, EthFilter> ethNewBlockFilter();
 
-    Request<?, EthUninstallFilter> ethUninstallFilter(BigInteger filterId);
+  Request<?, EthFilter> ethNewPendingTransactionFilter();
 
-    Request<?, EthLog> ethGetFilterChanges(BigInteger filterId);
+  Request<?, EthUninstallFilter> ethUninstallFilter(BigInteger filterId);
 
-    Request<?, EthLog> ethGetFilterLogs(BigInteger filterId);
+  Request<?, EthLog> ethGetFilterChanges(BigInteger filterId);
 
-    Request<?, EthLog> ethGetLogs(org.web3j.protocol.core.methods.request.EthFilter ethFilter);
+  Request<?, EthLog> ethGetFilterLogs(BigInteger filterId);
 
-    Request<?, EthGetWork> ethGetWork();
+  Request<?, EthLog>
+  ethGetLogs(org.web3j.protocol.core.methods.request.EthFilter ethFilter);
 
-    Request<?, EthSubmitWork> ethSubmitWork(String nonce, String headerPowHash, String mixDigest);
+  Request<?, EthGetWork> ethGetWork();
 
-    Request<?, EthSubmitHashrate> ethSubmitHashrate(String hashrate, String clientId);
+  Request<?, EthSubmitWork> ethSubmitWork(String nonce, String headerPowHash,
+                                          String mixDigest);
 
-    Request<?, DbPutString> dbPutString(String databaseName, String keyName, String stringToStore);
+  Request<?, EthSubmitHashrate> ethSubmitHashrate(String hashrate,
+                                                  String clientId);
 
-    Request<?, DbGetString> dbGetString(String databaseName, String keyName);
+  Request<?, DbPutString> dbPutString(String databaseName, String keyName,
+                                      String stringToStore);
 
-    Request<?, DbPutHex> dbPutHex(String databaseName, String keyName, String dataToStore);
+  Request<?, DbGetString> dbGetString(String databaseName, String keyName);
 
-    Request<?, DbGetHex> dbGetHex(String databaseName, String keyName);
+  Request<?, DbPutHex> dbPutHex(String databaseName, String keyName,
+                                String dataToStore);
 
-    Request<?, org.web3j.protocol.core.methods.response.ShhPost> shhPost(
-            org.web3j.protocol.core.methods.request.ShhPost shhPost);
+  Request<?, DbGetHex> dbGetHex(String databaseName, String keyName);
 
-    Request<?, ShhVersion> shhVersion();
+  Request<?, org.web3j.protocol.core.methods.response.ShhPost>
+  shhPost(org.web3j.protocol.core.methods.request.ShhPost shhPost);
 
-    Request<?, ShhNewIdentity> shhNewIdentity();
+  Request<?, ShhVersion> shhVersion();
 
-    Request<?, ShhHasIdentity> shhHasIdentity(String identityAddress);
+  Request<?, ShhNewIdentity> shhNewIdentity();
 
-    Request<?, ShhNewGroup> shhNewGroup();
+  Request<?, ShhHasIdentity> shhHasIdentity(String identityAddress);
 
-    Request<?, ShhAddToGroup> shhAddToGroup(String identityAddress);
+  Request<?, ShhNewGroup> shhNewGroup();
 
-    Request<?, ShhNewFilter> shhNewFilter(ShhFilter shhFilter);
+  Request<?, ShhAddToGroup> shhAddToGroup(String identityAddress);
 
-    Request<?, ShhUninstallFilter> shhUninstallFilter(BigInteger filterId);
+  Request<?, ShhNewFilter> shhNewFilter(ShhFilter shhFilter);
 
-    Request<?, ShhMessages> shhGetFilterChanges(BigInteger filterId);
+  Request<?, ShhUninstallFilter> shhUninstallFilter(BigInteger filterId);
 
-    Request<?, ShhMessages> shhGetMessages(BigInteger filterId);
+  Request<?, ShhMessages> shhGetFilterChanges(BigInteger filterId);
+
+  Request<?, ShhMessages> shhGetMessages(BigInteger filterId);
 }
